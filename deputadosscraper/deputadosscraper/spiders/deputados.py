@@ -20,7 +20,7 @@ class DeputadoSpider(scrapy.Spider):
 
     self.data['data_nascimento'] = response.css('.informacoes-deputado li:nth-child(5)::text').get().strip()
     
-    self.data['quant_viagem'] = response.css('.recursos-beneficios-deputado-container li:nth-child(5) > div > a::text').get()
+    self.data['quant_viagem'] = int(response.css('.recursos-beneficios-deputado-container li:nth-child(5) > div > a::text').get())
     print(self.data)
 
     next_page = response.css('.gasto .veja-mais a::attr(href)').getall()
